@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: 248 250 252;
+    --bg-secondary: 241 245 249;
+    --text-primary: 15 23 42;
+    --text-secondary: 71 85 105;
+    --border: 226 232 240;
+    --card-bg: 255 255 255;
+    --sidebar-bg: 255 255 255;
+  }
+
+  .dark {
+    --bg-primary: 10 10 20;
+    --bg-secondary: 15 15 30;
+    --text-primary: 248 250 252;
+    --text-secondary: 148 163 184;
+    --border: 30 30 60;
+    --card-bg: 15 20 40;
+    --sidebar-bg: 10 15 35;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[rgb(var(--bg-primary))] text-[rgb(var(--text-primary))] transition-colors duration-300;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-300 dark:bg-primary-700 rounded-full;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Cards */
+  .glass-card {
+    @apply bg-white/70 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/20;
+  }
+
+  .glass-card-hover {
+    @apply glass-card hover:bg-white/80 dark:hover:bg-white/8 hover:shadow-xl transition-all duration-300;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-600 to-accent-600;
+  }
+
+  .gradient-primary-soft {
+    @apply bg-gradient-to-br from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20;
+  }
+
+  /* Stat cards */
+  .stat-card {
+    @apply glass-card rounded-2xl p-5 flex flex-col gap-3;
+  }
+
+  /* Sidebar */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 cursor-pointer;
+  }
+
+  .sidebar-item-active {
+    @apply gradient-primary text-white shadow-md shadow-primary-500/30;
+  }
+
+  .sidebar-item-inactive {
+    @apply text-slate-600 dark:text-slate-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:text-primary-600 dark:hover:text-primary-400;
+  }
+
+  /* Input styles */
+  .input-base {
+    @apply w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-2.5 gradient-primary text-white rounded-xl font-medium shadow-md shadow-primary-500/30 hover:shadow-lg hover:shadow-primary-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply px-4 py-2 text-slate-600 dark:text-slate-400 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-green { @apply badge bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400; }
+  .badge-yellow { @apply badge bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400; }
+  .badge-red { @apply badge bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400; }
+  .badge-blue { @apply badge bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400; }
+  .badge-purple { @apply badge bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400; }
+
+  /* Attendance progress */
+  .attendance-high { @apply text-emerald-600 dark:text-emerald-400; }
+  .attendance-medium { @apply text-amber-600 dark:text-amber-400; }
+  .attendance-low { @apply text-red-600 dark:text-red-400; }
+
+  /* Table styles */
+  .table-base {
+    @apply w-full text-sm;
+  }
+  .table-header {
+    @apply text-left px-4 py-3 font-semibold text-slate-500 dark:text-slate-400 bg-slate-50/50 dark:bg-slate-800/50;
+  }
+  .table-cell {
+    @apply px-4 py-3 text-slate-700 dark:text-slate-300 border-b border-slate-100 dark:border-slate-800;
+  }
+
+  /* Page header */
+  .page-header {
+    @apply mb-6;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-slate-800 dark:text-slate-100;
+  }
+  .page-subtitle {
+    @apply text-sm text-slate-500 dark:text-slate-400 mt-1;
+  }
+
+  /* Section card */
+  .section-card {
+    @apply glass-card rounded-2xl p-6;
+  }
+}
